@@ -41,7 +41,9 @@ namespace AppHost.Bundle.Tests
 
             public SharedTestState()
             {
-                TestFixture = PreparePublishedSelfContainedTestProject("AppWithUnknownLanguageResource");
+                var testFixture = new TestProjectFixture("AppWithUnknownLanguageResource", RepoDirectories);
+                testFixture.EnsureRestoredForRid(testFixture.CurrentRid);
+                TestFixture = testFixture;
             }
 
             public void Dispose()
